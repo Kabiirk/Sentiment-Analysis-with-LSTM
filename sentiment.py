@@ -5,9 +5,9 @@ import emoji
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer 
 
 
-squeeze = pd.read_csv(r'C:\Users\kabii\Desktop\FOLDERS\VIT\4th Year\SEM 1\ECE4032 - Neural Network and Deep Learning\EPJ\NNDL_epj\sanitized\squeeze_sanitized.csv')
-press = pd.read_csv(r'C:\Users\kabii\Desktop\FOLDERS\VIT\4th Year\SEM 1\ECE4032 - Neural Network and Deep Learning\EPJ\NNDL_epj\sanitized\press_sanitized.csv')
-spray2 = pd.read_csv(r'C:\Users\kabii\Desktop\FOLDERS\VIT\4th Year\SEM 1\ECE4032 - Neural Network and Deep Learning\EPJ\NNDL_epj\sanitized\spray2_sanitized.csv')
+squeeze = pd.read_csv(r'C:\Users\username\..\sanitized\squeeze_sanitized.csv')
+press = pd.read_csv(r'C:\Users\username\..\sanitized\press_sanitized.csv')
+spray2 = pd.read_csv(r'C:\Users\username\..\sanitized\spray2_sanitized.csv')
 
 #Corrections in spray2
 spray2['Review_text']=spray2['Review_text'].fillna("")
@@ -120,10 +120,10 @@ print(press.head())
 print(spray2.head())
 '''
 
-#sq_wr = squeeze.to_csv(r'C:\Users\kabii\Desktop\FOLDERS\VIT\4th Year\SEM 1\ECE4032 - Neural Network and Deep Learning\EPJ\NNDL_epj\sanitized_sentiment\squeeze_sanitized_sentiment.csv')
-#pr_wr = press.to_csv(r'C:\Users\kabii\Desktop\FOLDERS\VIT\4th Year\SEM 1\ECE4032 - Neural Network and Deep Learning\EPJ\NNDL_epj\sanitized_sentiment\press_sanitized_sentiment.csv')
-#sp2_wr = spray2.to_csv(r'C:\Users\kabii\Desktop\FOLDERS\VIT\4th Year\SEM 1\ECE4032 - Neural Network and Deep Learning\EPJ\NNDL_epj\sanitized_sentiment\spray2_sanitized_sentiment.csv')
-spray = pd.read_csv(r'C:\Users\kabii\Desktop\FOLDERS\VIT\4th Year\SEM 1\ECE4032 - Neural Network and Deep Learning\EPJ\NNDL_epj\sanitized\spray_sanitized.csv')
+sq_wr = squeeze.to_csv(r'C:\Users\username\..\sanitized_sentiment\squeeze_sanitized_sentiment.csv')
+pr_wr = press.to_csv(r'C:\Users\username\..\sanitized_sentiment\press_sanitized_sentiment.csv')
+sp2_wr = spray2.to_csv(r'C:\Users\username\..\sanitized_sentiment\spray2_sanitized_sentiment.csv')
+spray = pd.read_csv(r'C:\Users\username\..\sanitized\spray_sanitized.csv')
 l = []
 for i in range(10):
     s = spray["Review_text"][i]

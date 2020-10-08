@@ -5,10 +5,10 @@ import emoji
 
 
 #loading the dataframes
-spray = pd.read_csv(r'C:\Users\kabii\Desktop\FOLDERS\VIT\4th Year\SEM 1\ECE4032 - Neural Network and Deep Learning\EPJ\NNDL_epj\1 - Web Scraping\Amazon Web Scraper\filename_spray.csv')
-squeeze = pd.read_csv(r'C:\Users\kabii\Desktop\FOLDERS\VIT\4th Year\SEM 1\ECE4032 - Neural Network and Deep Learning\EPJ\NNDL_epj\1 - Web Scraping\Amazon Web Scraper\filename_squeeze.csv')
-press = pd.read_csv(r'C:\Users\kabii\Desktop\FOLDERS\VIT\4th Year\SEM 1\ECE4032 - Neural Network and Deep Learning\EPJ\NNDL_epj\1 - Web Scraping\Amazon Web Scraper\filename_press.csv')
-spray2 = pd.read_csv(r'C:\Users\kabii\Desktop\FOLDERS\VIT\4th Year\SEM 1\ECE4032 - Neural Network and Deep Learning\EPJ\NNDL_epj\1 - Web Scraping\Amazon Web Scraper\filename_spray2.csv')
+spray = pd.read_csv(r'C:\Users\username\..\1 - Web Scraping\Amazon Web Scraper\filename_spray.csv')
+squeeze = pd.read_csv(r'C:\Users\username\..\1 - Web Scraping\Amazon Web Scraper\filename_squeeze.csv')
+press = pd.read_csv(r'C:\Users\username\..\1 - Web Scraping\Amazon Web Scraper\filename_press.csv')
+spray2 = pd.read_csv(r'C:\Users\username\..\1 - Web Scraping\Amazon Web Scraper\filename_spray2.csv')
 
 #data cleaning and formatting
 spray2.dropna()
@@ -155,7 +155,7 @@ print(press.dtypes)
 
 
 #export data to a new file
-spray_sanitized = spray.to_csv(r'C:\Users\kabii\Desktop\FOLDERS\VIT\4th Year\SEM 1\ECE4032 - Neural Network and Deep Learning\EPJ\NNDL_epj\sanitized\spray_sanitized.csv')
-spray2_sanitized = spray2.to_csv(r'C:\Users\kabii\Desktop\FOLDERS\VIT\4th Year\SEM 1\ECE4032 - Neural Network and Deep Learning\EPJ\NNDL_epj\sanitized\spray2_sanitized.csv')
-squeeze_sanitized = squeeze.to_csv(r'C:\Users\kabii\Desktop\FOLDERS\VIT\4th Year\SEM 1\ECE4032 - Neural Network and Deep Learning\EPJ\NNDL_epj\sanitized\squeeze_sanitized.csv')
-press_sanitized = press.to_csv(r'C:\Users\kabii\Desktop\FOLDERS\VIT\4th Year\SEM 1\ECE4032 - Neural Network and Deep Learning\EPJ\NNDL_epj\sanitized\press_sanitized.csv')
+spray_sanitized = spray.to_csv(r'C:\Users\username\..\sanitized\spray_sanitized.csv')
+spray2_sanitized = spray2.to_csv(r'C:\Users\username\..\sanitized\spray2_sanitized.csv')
+squeeze_sanitized = squeeze.to_csv(r'C:\Users\username\..\sanitized\squeeze_sanitized.csv')
+press_sanitized = press.to_csv(r'C:\Users\username\..\sanitized\press_sanitized.csv')

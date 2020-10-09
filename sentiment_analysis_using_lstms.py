@@ -200,9 +200,3 @@ for i in list(spray["Review_text"]):
     pred = model.predict(padded)
     labels = ['Neutral','Negative','Positive']
     result.append(labels[np.argmax(pred)])
-
-count = 0
-for i in result:
-    if i=="Negative" or i=="N":
-        count+=1
-print(count)

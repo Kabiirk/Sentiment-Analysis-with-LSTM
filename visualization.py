@@ -23,11 +23,13 @@ from keras.models import model_from_json
 from keras.models import load_model
 from nltk.tokenize import RegexpTokenizer
 
+'''
 from google.colab import drive
 drive.mount('/content/drive')
+'''
 
 #reading the data
-spray = pd.read_csv("/content/drive/My Drive/nndl/spray_sanitized.csv")
+spray = pd.read_csv("/sanitized/spray_sanitized.csv")
 spray.drop('Unnamed: 0', axis='columns', inplace=True)
 
 def load_embeddings(embedding_path):
@@ -98,7 +100,7 @@ gloveFile = '/content/drive/My Drive/nndl/Data/glove/glove_6B_100d.txt'
 weight_matrix, word_idx = load_embeddings(gloveFile)
 
 #Load the Model
-new_model = tf.keras.models.load_model('/content/drive/My Drive/nndl/model/best_model.hdf5')
+new_model = tf.keras.models.load_model('/model/best_model.hdf5')
 
 txt = "this is a very good product 10/10 would recommend !!"
 result = live_test(new_model, txt, word_idx)
@@ -123,11 +125,11 @@ for i in range(0,len(l)):
     else:
         indices.append(i)
 
-len(scores)
+print(len(scores))
 
-len(spray)
+print(len(spray))
 
-len(indices)
+print(len(indices))
 
 new = spray
 

@@ -100,9 +100,6 @@ weight_matrix, word_idx = load_embeddings(gloveFile)
 #Load the Model
 new_model = tf.keras.models.load_model('/content/drive/My Drive/nndl/model/best_model.hdf5')
 
-# Show the model architecture
-new_model.summary()
-
 txt = "this is a very good product 10/10 would recommend !!"
 result = live_test(new_model, txt, word_idx)
 print(result)
@@ -215,28 +212,6 @@ fig, ax = plt.subplots(figsize=(8,6))
 ax = sns.heatmap(htmp,cmap="Blues", ax = ax)
 ax.invert_yaxis()
 
-import matplotlib.pyplot as plt
-from wordcloud import WordCloud, STOPWORDS
-comment_words = ' '
-stopwords = set(STOPWORDS) 
-
-plt.figure(figsize = (10, 8), facecolor = None) 
-wordcloud2 = WordCloud().generate(' '.join(temp_p['Review_text']))
-plt.imshow(wordcloud2)
-plt.axis("off")
-plt.show()
-
-import matplotlib.pyplot as plt
-from wordcloud import WordCloud, STOPWORDS
-comment_words = ' '
-stopwords = set(STOPWORDS) 
-
-plt.figure(figsize = (10, 8), facecolor = None) 
-wordcloud2 = WordCloud().generate(' '.join(temp_n['Review_text']).replace("good",""))
-plt.imshow(wordcloud2)
-plt.axis("off")
-plt.show()
-
 import seaborn as sns
 
 # Plot each year's time series in its own facet
@@ -267,3 +242,24 @@ g.set_titles("")
 g.set_axis_labels("Days", "Passengers")
 g.tight_layout()
 
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud, STOPWORDS
+comment_words = ' '
+stopwords = set(STOPWORDS) 
+
+plt.figure(figsize = (10, 8), facecolor = None) 
+wordcloud2 = WordCloud().generate(' '.join(temp_p['Review_text']))
+plt.imshow(wordcloud2)
+plt.axis("off")
+plt.show()
+
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud, STOPWORDS
+comment_words = ' '
+stopwords = set(STOPWORDS) 
+
+plt.figure(figsize = (10, 8), facecolor = None) 
+wordcloud2 = WordCloud().generate(' '.join(temp_n['Review_text']).replace("good",""))
+plt.imshow(wordcloud2)
+plt.axis("off")
+plt.show()

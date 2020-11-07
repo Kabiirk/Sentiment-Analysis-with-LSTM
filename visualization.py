@@ -23,10 +23,6 @@ from keras.models import model_from_json
 from keras.models import load_model
 from nltk.tokenize import RegexpTokenizer
 
-'''
-from google.colab import drive
-drive.mount('/content/drive')
-'''
 
 #reading the data
 spray = pd.read_csv("/sanitized/spray_sanitized.csv")
@@ -96,24 +92,15 @@ spray.head()
 
 import utility_functions as uf
 
-gloveFile = '/content/drive/My Drive/nndl/Data/glove/glove_6B_100d.txt'
+gloveFile = 'path for/glove_6B_100d.txt'
 weight_matrix, word_idx = load_embeddings(gloveFile)
 
 #Load the Model
-new_model = tf.keras.models.load_model('/model/best_model.hdf5')
+new_model = tf.keras.models.load_model('model/best_model.hdf5')
 
 txt = "this is a very good product 10/10 would recommend !!"
 result = live_test(new_model, txt, word_idx)
 print(result)
-
-pip install vaderSentiment
-
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer 
-
-sid_obj = SentimentIntensityAnalyzer() 
-dicto = sid_obj.polarity_scores("this is a very good product 10/10 would recommend !!")
-
-print(dicto)
 
 l = list(spray["Review_text"])
 scores = []
@@ -126,9 +113,7 @@ for i in range(0,len(l)):
         indices.append(i)
 
 print(len(scores))
-
 print(len(spray))
-
 print(len(indices))
 
 new = spray

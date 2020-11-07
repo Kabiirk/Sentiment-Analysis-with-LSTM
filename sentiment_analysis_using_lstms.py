@@ -9,12 +9,9 @@ nltk.download("stopwords")
 from nltk.corpus import stopwords
 STOPWORDS = set(stopwords.words('english'))
 
-from google.colab import drive
-drive.mount('/content/drive')
-
 #reading the data
-spray = pd.read_csv("../spray_sanitized.csv")
-concat = pd.read_csv("../concat.csv")
+spray = pd.read_csv("sanitized/spray_sanitized.csv")
+concat = pd.read_csv("concat.csv")
 concat.drop('Unnamed: 0', axis='columns', inplace=True)
 
 print(spray.head())
@@ -38,27 +35,11 @@ print(neu_204)
 
 stack = pd.concat([neg, pos_714, neu ], axis=0)
 
-stack
+print(stack)
 
 from sklearn.utils import shuffle
 stack = shuffle(stack)
 print(stack)
-
-'''
-from numpy import array
-from numpy import asarray
-from numpy import zeros
-
-embeddings_dictionary = dict()
-glove_file = open('/content/drive/My Drive/nndl/glove.6B.100d.txt', encoding="utf8")
-
-for line in glove_file:
-    records = line.split()
-    word = records[0]
-    vector_dimensions = asarray(records[1:], dtype='float32')
-    embeddings_dictionary [word] = vector_dimensions
-glove_file.close()
-'''
 
 vocab_size = 5000
 embedding_dim = 64
@@ -84,8 +65,7 @@ for j in list(concat["Overall"]):
 
 print(len(articles))
 print(len(labels))
-
-articles
+print(articles)
 
 train_size = int(len(articles) * training_portion)
 
@@ -110,15 +90,14 @@ train_sequences = tokenizer.texts_to_sequences(train_articles)
 print(train_sequences[10])
 
 train_padded = pad_sequences(train_sequences, maxlen=max_length, padding=padding_type, truncating=trunc_type)
+
+#Verfication that sentences are padded
 print(len(train_sequences[0]))
 print(len(train_padded[0]))
-
 print(len(train_sequences[1]))
 print(len(train_padded[1]))
-
 print(len(train_sequences[10]))
 print(len(train_padded[10]))
-
 print(train_padded[10])
 
 validation_sequences = tokenizer.texts_to_sequences(validation_articles)
@@ -150,8 +129,7 @@ print(decode_article(train_padded[10]))
 print('---')
 print(train_articles[10])
 
-embedding_dim
-
+# Model Definition
 model = tf.keras.Sequential([
     # Add an Embedding layer expecting input vocab of size 5000, and output embedding dimension of size 64 we set at the top
     tf.keras.layers.Embedding(vocab_size, embedding_dim),

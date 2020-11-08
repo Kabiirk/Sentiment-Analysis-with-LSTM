@@ -8,7 +8,8 @@ Of course, these data-driven insights aren’t generated out of thin air, often,
 * Introduction
 * Tools used
 * Get Started !
-
+ 
+ 
 ### Introduction
 In today’s world, our decision-making is centred around other people’s opinion about a certain product or service. It is here that NLP methodologies like Sentiment analysis shine the most as they allow people a good idea about the public opinion on the product and make an informed decision based off it. 
 As compared to RNNs, LSTMs don’t have the problem of vanishing gradient that often and their models are also lightweight and perform well, making LSTM-based models ideal for mobile computation or usage in machines with less resources. Not only are LSTMs faster, they are more accurate as well for NLP-related tasks. This project aims at utilising those advantages to bring accurate insights to the consumer for a low computational cost.
@@ -52,11 +53,13 @@ Which is near unusable in this state, we would need to perform some initial clea
 After which we proceed to score them using VADER.
  
 2. **STEP 2: Scoring the Training Set using VADER**
+
 Correct the filepaths as required and then just run the *sentiment.py* Python Script, it should output a new *filename_sanitized_sentiment.csv*
  
 **NOTE:** Scraping can be done again as required if data obtained in the first scrape wasn't enough (Which was the case here, 3 files worked for me). it is advised to Scrape multiple files first and then score them in one go after modifying *sentiment.py*.
  
 3. **STEP 3: Preprocessing of Text**
+
 Before we put our text into the LSTM for training, we need to understand that we need to feed it in a form the network can understand. LSTMs and even other ANNs can’t comprehend words “as is” therefore they need to be converted into sequences/vectors and then into embedding before being fed into the network.
  
 This is done in the *(Training)Sentiment_Analysis_using_LSTMs.ipynb* or the *sentiment_analysis_using_lstms.py*.

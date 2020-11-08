@@ -97,6 +97,6 @@ res = live_test(new_model, txt, word_idx)
 print(res)
 ```
 
-This is usually done with just ```model.predict()``` method, but separate function ```live_test()``` has been used so as to give a more calibrated sentiment score. it is defined in the *(Testing_+_Visualization)Sentiment_Analysis_using_LSTMs.ipynb* or *visualization.py* & will be done with the Visualization itself.
+This is usually done with just ```model.predict()``` method, but separate function ```live_test()``` has been used so as to give a more calibrated sentiment score(```live_test()``` uses the ```model.predict()``` method to get the main score). it is defined in the *(Testing_+_Visualization)Sentiment_Analysis_using_LSTMs.ipynb* or *visualization.py* & will be done with the Visualization itself.
 
 ## All Done :sparkles:

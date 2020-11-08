@@ -31,7 +31,7 @@ As compared to RNNs, LSTMs don’t have the problem of vanishing gradient that o
 
 ### Get started !
  
-**STEP 1: Web Scraping**
+* **STEP 1: Web Scraping**
  
 **NOTE:** Make sure to have [Scrapy installed](https://docs.scrapy.org/en/latest/intro/install.html) first before running these commands.
  
@@ -53,18 +53,18 @@ Which is near unusable in this state, we would need to perform some initial clea
  
 After which we proceed to score them using VADER.
  
-**STEP 2: Scoring the Training Set using VADER**
+* **STEP 2: Scoring the Training Set using VADER**
  
 Correct the filepaths as required and then just run the *sentiment.py* Python Script, it should output a new *filename_sanitized_sentiment.csv*
 **NOTE:** Scraping can be done again as required if data obtained in the first scrape wasn't enough (Which was the case here, 3 files worked for me). it is advised to Scrape multiple files first and then score them in one go after modifying *sentiment.py*.
  
-**STEP 3: Preprocessing of Text**
+* **STEP 3: Preprocessing of Text**
  
 Before we put our text into the LSTM for training, we need to understand that we need to feed it in a form the network can understand. LSTMs and even other ANNs can’t comprehend words “as is” therefore they need to be converted into sequences/vectors and then into embedding before being fed into the network.
  
 This is done in the *(Training)Sentiment_Analysis_using_LSTMs.ipynb* or the *sentiment_analysis_using_lstms.py*.
  
-**STEP 4: Creation of LSTM and Training**
+* **STEP 4: Creation of LSTM and Training**
  
 ```
 model = tf.keras.Sequential([
@@ -83,7 +83,7 @@ And we finally train our model with:
 model.fit(train_padded, training_label_seq, epochs=num_epochs, validation_data=(validation_padded, validation_label_seq), verbose=2)
 ```
  
-**STEP 5: Predicting compound scores on our Test Set using the model and Visualising the Results**
+* **STEP 5: Predicting compound scores on our Test Set using the model and Visualising the Results**
  
 For this step we’ll be using our scraped dataset which we did not score with vader. This can be done with the help of the model.predict() method, but we’ll still need to convert each of our reviews into vectors with the help of tokenizer.text_to_sequence() method and then we pad the sequence with pad_sequences() method before putting it into the model.predict() function.
 

@@ -30,8 +30,9 @@ As compared to RNNs, LSTMs don’t have the problem of vanishing gradient that o
 #### NOTE: There are 2 versions of the Sentiment Analysis Model Training and Result Visualization files, a notebook (.ipynb) or python (.py) scripts to be run locally use whichever is suited, However, The notebooks are more convenient as they only need to be uploaded to your collaboratory instance
 
 ### Get started !
-1. **STEP 1: Web Scraping**
-
+ 
+**STEP 1: Web Scraping**
+ 
 **NOTE:** Make sure to have [Scrapy installed](https://docs.scrapy.org/en/latest/intro/install.html) first before running these commands.
  
 First, we’ll be using SCRAPY to extract Reviews and their metadata like number of stars, date the review was posted on etc. This is done via DOM traversal in scrapy where the Spider coded by us goes through the HTML DOM of the page upto the tag which stores the required data and save it in a dataframe. This can be done by navigating to the **Amazon Web Scraper**(The folder which has scrapy.cfg) via your CLI & typing the following:
@@ -52,20 +53,19 @@ Which is near unusable in this state, we would need to perform some initial clea
  
 After which we proceed to score them using VADER.
  
-2. **STEP 2: Scoring the Training Set using VADER**
-
-Correct the filepaths as required and then just run the *sentiment.py* Python Script, it should output a new *filename_sanitized_sentiment.csv*
+**STEP 2: Scoring the Training Set using VADER**
  
+Correct the filepaths as required and then just run the *sentiment.py* Python Script, it should output a new *filename_sanitized_sentiment.csv*
 **NOTE:** Scraping can be done again as required if data obtained in the first scrape wasn't enough (Which was the case here, 3 files worked for me). it is advised to Scrape multiple files first and then score them in one go after modifying *sentiment.py*.
  
-3. **STEP 3: Preprocessing of Text**
-
+**STEP 3: Preprocessing of Text**
+ 
 Before we put our text into the LSTM for training, we need to understand that we need to feed it in a form the network can understand. LSTMs and even other ANNs can’t comprehend words “as is” therefore they need to be converted into sequences/vectors and then into embedding before being fed into the network.
  
 This is done in the *(Training)Sentiment_Analysis_using_LSTMs.ipynb* or the *sentiment_analysis_using_lstms.py*.
  
-4. **STEP 4: Creation of LSTM and Training**
-
+**STEP 4: Creation of LSTM and Training**
+ 
 ```
 model = tf.keras.Sequential([
     tf.keras.layers.Embedding(vocab_size, embedding_dim),
@@ -75,7 +75,7 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(6, activation='softmax')
 ])
 ```
-
+ 
 Here we create a sequential model using Sequential() object from Keras. First we’ll be adding the embedding layer which takes the our created word vectors as inputs and sends them to the LSTM layer which we can create using model.add(LSTM(n)) method, where ‘n’ is the number of LSTM units in our layer. If we want to make Multi-layered LSTM models, we’ll need to put the return_sequence parameter to true.
 And we finally train our model with:
 
@@ -83,8 +83,8 @@ And we finally train our model with:
 model.fit(train_padded, training_label_seq, epochs=num_epochs, validation_data=(validation_padded, validation_label_seq), verbose=2)
 ```
  
-5. **STEP 5: Predicting compound scores on our Test Set using the model and Visualising the Results**
-
+**STEP 5: Predicting compound scores on our Test Set using the model and Visualising the Results**
+ 
 For this step we’ll be using our scraped dataset which we did not score with vader. This can be done with the help of the model.predict() method, but we’ll still need to convert each of our reviews into vectors with the help of tokenizer.text_to_sequence() method and then we pad the sequence with pad_sequences() method before putting it into the model.predict() function.
 
 The Final part of this project would be to visualize our predicted values, because in a real-world setting, most people won’t be able to gain insights just by a table, that too a table having 1000’s of rows. Depicting that data via easy-to-understand charts and graphs makes it easier for the other person to infer the implications of the data like various trends of certain emotions and the rise and fall of these emotions in certain time periods.

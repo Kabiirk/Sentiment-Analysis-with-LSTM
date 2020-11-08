@@ -99,4 +99,4 @@ print(res)
 
 This is usually done with just ```model.predict()``` method, but separate function ```live_test()``` has been used so as to give a more calibrated sentiment score. it is defined in the *(Testing_+_Visualization)Sentiment_Analysis_using_LSTMs.ipynb* or *visualization.py* & will be done with the Visualization itself.
 
-# All Done ! 
+## All Done :sparkles:
